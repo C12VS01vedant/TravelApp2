@@ -1,6 +1,6 @@
 const express=require('express');
 const mongoose=require('mongoose');
-
+const cors=require('cors');
 const dotnev=require('dotenv');
 dotnev.config();
 
@@ -19,10 +19,12 @@ const app=express();
 
 const PORT=3500;
 
+app.use(cors());
+
 app.use(express.json());
 connectDB();
 app.get('/',(req,res)=>{
-    res.send('Hi')
+    res.send('Hi');
 });
 
 app.use('/api/hotels',hotelRouter);
